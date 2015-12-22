@@ -8,6 +8,8 @@ si git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev
 
 si default-jre default-jdk # java for android compiling
 
+wget http://zlib.net/zlib-1.2.8.tar.gz
+
 function ins_gcc5 ()
 {
 	sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
