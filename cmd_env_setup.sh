@@ -10,8 +10,10 @@ alias cs='ctags -L cscope.files && cscope -bkq -i cscope.files'
 alias fgc="find . -name "*.c" | xargs grep -rn "
 alias fgh="find . -name "*.h" | xargs grep -rn "
 alias fgs="find . -name "*.s" | xargs grep -rn "
+alias cmd="terminator -l mylayout"
+alias d='objdump -d -M intel '
 
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/kernel/scripts
 export USE_CCACHE=1
 export CCACHE_DIR=$HOME/ccache
 
@@ -23,5 +25,60 @@ function make_tag()
 {
 	find . -type f -name "*.[c|h|s|S]" -o -name "*.cpp" > cscope.files
 	ctags -L cscope.files && cscope -bkq -i cscope.files
+}
+
+function fsrc()
+{
+#	echo 'time find . -name "*.[c|s|S|h|o]" -o -name "*.cpp" -o  -name "*.mk" -o -name "*.java"  -o -name "*.sh"'
+
+	if [ $# -lt 1 ]; then
+		find . \( -name "*.[c|s|S|h]" -o -name "*.cpp" -o  -name "*.mk" -o -name "*.java"  -o -name "*.sh" \)  -exec ls $PWD/{} \;
+	else
+		for dir in $*
+		do
+			find $dir \( -name "*.[c|s|S|h]" -o -name "*.cpp" -o  -name "*.mk" -o -name "*.java"  -o -name "*.sh" \)  -exec ls $PWD/{} \;
+		done
+	fi
+}
+
+function synerc()
+{
+	pgrep synergy | xargs kill -9
+	if [ $1 -ne 0 ]; then
+		synergyc 172.16.118.224
+	fi
+}
+
+function f()
+{
+	if [ $# -lt 1 ];then
+		echo "Usage f pattern"
+		return -1
+	fi
+	find . -name ".git" -prune -o -name "*$1*" -print
+}
+
+function g()
+{
+	if [ $# -lt 2 ];then
+		echo "Usage g pattern dirpath"
+		return -1
+	fi
+	grep -rn "$1" $2 --exclude-dir=.git --exclude-dir=.repo --exclude=tags --exclude=cscope*
+}
+
+function push()
+{
+	if [ $# -lt 1 ];then
+		echo "Usage push xxx.sh"
+	fi
+	adb root
+	adb push $1 /data/
+	adb shell chmod 777 /data/$1
+}
+
+function alog_kmsg()
+{
+	grep " KERNEL  " $1  | cut -b44-
 }
 

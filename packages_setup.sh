@@ -1,12 +1,12 @@
-si vim
-si build-essential #gcc 
-si gawk
-si git terminator unp tree
-si ncurses-dev # for GDB
-si meld # source code compare and merge tool
-si git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev lib32ncurses5-dev lib32ncurses5 x11proto-core-dev libx11-dev  lib32z-dev libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown libxml2-utils xsltproc  lib32readline-gplv2-dev #  android compiling
+sudo apt-get install -y vim ctags cscope
+sudo apt-get install -y build-essential #gcc 
+sudo apt-get install -y gawk
+sudo apt-get install -y git terminator unp tree
+sudo apt-get install -y ncurses-dev # for GDB
+sudo apt-get install -y meld # source code compare and merge tool
+sudo apt-get install -y git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev lib32ncurses5-dev lib32ncurses5 x11proto-core-dev libx11-dev  lib32z-dev libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown libxml2-utils xsltproc  lib32readline-gplv2-dev #  android compiling
 
-si default-jre default-jdk # java for android compiling
+sudo apt-get install -y default-jre default-jdk # java for android compiling
 
 wget http://zlib.net/zlib-1.2.8.tar.gz
 

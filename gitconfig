@@ -1,0 +1,38 @@
+[color]	
+	ui = auto
+    diff = auto
+    status = true
+    branch = auto
+    interactive = auto
+    log = true
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    pl = pull
+    ps = push
+    df = diff
+    dt = difftool
+    l = log --stat
+    cp = cherry-pick
+    ca = commit -a
+    br = branch
+[user]
+    name = Yu,Haipeng
+    email = hpyu@live.cn
+[merge]
+    summary = true
+    tool = vimdiff
+[diff]
+    renames = copy
+[status]
+    submodulesummary = -1
+[mergetool "vimdiff"]
+    cmd = "vim --noplugin \"$PWD/$MERGED\" \
+          +\":split $PWD/$REMOTE\" +\":set buftype=nowrite\" \
+          +\":vertical diffsplit $PWD/$LOCAL\" +\":set buftype=nowrite\" \
+          +\":vertical diffsplit $PWD/$BASE\" +\":set buftype=nowrite\" \
+          +\":wincmd l\""
+[format]
+    numbered = auto
+
