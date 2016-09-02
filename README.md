@@ -1,4 +1,9 @@
-# linux_env_setup
+# Config Linux Developing Environment
 
-git clone https://github.com/hpyu/linux_env_setup.git -b dev
+## Github address
+```git clone https://github.com/hpyu/linux_config.git```
+
+## Config items
+### 1. Usage
+``` ./setup.sh [package] [vim] [bash] [bin]```
 

@@ -1,5 +1,5 @@
-sudo apt-get install -y vim ctags cscope
-sudo apt-get install -y build-essential #gcc 
+sudo apt-get install -y vim cscope ctags
+sudo apt-get install -y build-essential  #gcc
 sudo apt-get install -y gawk
 sudo apt-get install -y git terminator unp tree
 sudo apt-get install -y ncurses-dev # for GDB

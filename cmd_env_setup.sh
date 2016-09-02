@@ -41,14 +41,6 @@ function fsrc()
 	fi
 }
 
-function synerc()
-{
-	pgrep synergy | xargs kill -9
-	if [ $1 -ne 0 ]; then
-		synergyc 172.16.118.224
-	fi
-}
-
 function f()
 {
 	if [ $# -lt 1 ];then

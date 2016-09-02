@@ -22,6 +22,16 @@ function update_vim()
 	cp -a dot.vim/vim ~/.vim
 }
 
+function update_bin()
+{
+	if [ ! -e ~/bin ];
+	then
+		mkdir ~/bin
+	fi
+
+	cp -f bin/* ~/bin/
+}
+
 for item in $@; do
 	if [ $item == "bashrc" ]; then
 		echo "update .bashrc"
@@ -36,6 +46,11 @@ for item in $@; do
 	if [ $item == "vim" ]; then
 		echo "update vim"
 		update_vim
+	fi
+
+	if [ $item == "bin" ]; then
+		echo "update bin"
+		update_bin
 	fi
 done
 
