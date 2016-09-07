@@ -74,3 +74,9 @@ function alog_kmsg()
 	grep " KERNEL  " $1  | cut -b44-
 }
 
+function screen_attach()
+{
+	session_process=$(screen -ls | awk 'NR==2 {print $1}')
+	screen -r $session_process
+}
+
