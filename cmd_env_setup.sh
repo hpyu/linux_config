@@ -80,3 +80,16 @@ function screen_attach()
 	screen -r $session_process
 }
 
+function dis_func_x86()
+{
+	if [ $# -lt 2 ]; then
+		echo "Usage: dis_func_x86 obj func_name"
+		return -1
+	fi
+
+	obj=$1
+	func_name=$2
+
+	objdump -d -M intel $obj | grep -A 1000 "<$func_name>:" | sed -e '/^$/,$d'
+}
+
