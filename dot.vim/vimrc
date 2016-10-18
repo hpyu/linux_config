@@ -60,6 +60,10 @@ nmap <C-l> :Tlist<CR><CR>
 nmap <C-n> :NERDTreeClose<CR><CR>
 nmap <C-n><C-n> :NERDTree<CR><CR>
 
+nmap gn :bn<cr>
+nmap gp :bp<cr>
+nmap gd :bd<cr>
+
 " cscope start
 	nmap <C-a>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 	nmap <C-a>g :cs find g <C-R>=expand("<cword>")<CR><CR>
