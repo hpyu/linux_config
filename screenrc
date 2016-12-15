@@ -4,7 +4,7 @@ vbell off
 autodetach on
 altscreen on
 shelltitle "$ |bash"
-defscrollback 10000
+defscrollback 1000000
 defutf8 on
 nonblock on
 
@@ -30,3 +30,4 @@ hardstatus string "%{.bW}%-w%{.rY}%n %t%{-}%+w %=%{..G} %H(%l) %{..Y} %Y/%m/%d %
 #stuff "cd /local/hanbing/\012"
 #escape ""
 #bindkey ^ad detach
+
