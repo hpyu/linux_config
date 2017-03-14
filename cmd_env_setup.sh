@@ -47,7 +47,7 @@ function f()
 		echo "Usage f pattern"
 		return -1
 	fi
-	find . -name ".git" -prune -o -name "*$1*" -print
+	find . -iname ".git" -prune -o -iname "*$1*" -print
 }
 
 function g()
@@ -57,6 +57,14 @@ function g()
 		return -1
 	fi
 	grep -rn "$1" $2 --exclude-dir=.git --exclude-dir=.repo --exclude=tags --exclude=cscope*
+}
+
+function vil()
+{
+	fname=$(echo $1 | cut -d ':' -f 1)
+	line=$(echo $1 | cut -d ':' -f 2)
+
+	vim $fname +$line
 }
 
 function push()
@@ -90,6 +98,31 @@ function dis_func_x86()
 	obj=$1
 	func_name=$2
 
-	objdump -d -M intel $obj | grep -A 1000 "<$func_name>:" | sed -e '/^$/,$d'
+	objdump -d -M intel $obj | grep -A 1000 "<$func_name>:" | sed -e '/^$/,$d' > $func_name.S
+	echo file $func_name.S generated
+	echo
 }
 
+function dis_func_line()
+{
+	if [ $# -lt 2 ]; then
+		echo "Usage: $0  vmlinux func_name"
+		return -1
+	fi
+
+	vmlinux=$1
+	func_name=$(echo $2 | cut -d '+' -f 1)
+	offset=$(echo $2 | cut -d '+' -f 2)
+
+	dis_func_x86 $vmlinux $func_name
+
+	line=`head -n 1 $func_name.S`
+	start_address=$(echo $line | cut -d ' ' -f 1 )
+	address=$((0x$start_address + $offset))
+	address=`printf "%x" $address`
+
+	echo head: $line
+	echo addr: $address
+
+	addr2line $address -e $vmlinux
+}
