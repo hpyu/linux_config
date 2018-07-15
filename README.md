@@ -6,4 +6,3 @@
 ## Config items
 ### 1. Usage
 ``` ./setup.sh [package] [vim] [bash] [bin]```
-
